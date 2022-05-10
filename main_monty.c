@@ -20,6 +20,7 @@ int main(int argc, char **argv)
 {
 	FILE *monty_fd = NULL;
 	int exit_code = EXIT_SUCCESS;
+
 	if (argc != 2)
 		return(useage_error());
 	monty_fd = fopen(argv[1], "r");

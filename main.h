@@ -48,8 +48,16 @@ void free_tokens();
 void print_tokens(); /* used for testing purposes*/
 int execute_file(FILE *monty_fd);
 
+/* stack_functions */
+void free_stack(stack_t **stack);
+
 /* error functions */
 int useage_error(void);
 int file_open_error(char *file);
+int unknown_op_error(char *op, int lineNum);
+
+/* op_funcs */
+void monty_push(stack_t **stack, unsigned int line_number);
+void monty_pall(stack_t **stack, unsigned int line_number);
 
 #endif

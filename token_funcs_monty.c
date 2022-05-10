@@ -1,4 +1,29 @@
 #include "main.h"
+#include <string.h>
+
+/**
+ * get_op_func - Matches an opcode with a function if one exists
+ * @opcode: The opcode to match.
+ *
+ * Return: A pointer to the function or NULL
+ */
+void (*get_func(char *opcode))(stack_t**, unsigned int)
+{
+	instruction_t op_funcs[] = {
+		{"push", monty_push},
+		{"pall", monty_pall},
+		{NULL, NULL}
+	};
+	int i;
+
+	for (i = 0; op_funcs[i].opcode; i++)
+	{
+		if (strcmp(opcode, op_funcs[i].opcode) == 0)
+			return (op_funcs[i].f);
+	}
+
+	return (NULL);
+}
 
 /**
  * execute_file - executes each line
@@ -10,7 +35,9 @@ int execute_file(FILE *monty_fd)
 {
 	char *line = NULL;
 	size_t len = 0;
-	int lineCount = 0;
+	int lineCount = 0, exitStatus = EXIT_SUCCESS;
+	stack_t *head = NULL;
+	void (*perform_func)(stack_t**, unsigned int);
 
 	while (getdelim(&line, &len, '\n',  monty_fd) != -1)
 	{
@@ -21,14 +48,23 @@ int execute_file(FILE *monty_fd)
 		}
 		find_tokens(line);
 		lineCount++;
-		print_tokens();
+		perform_func = get_func(tokens[0]);
+		if (perform_func == NULL)
+		{
+			exitStatus = unknown_op_error(tokens[0], lineCount);
+			free_tokens();
+			free_stack(&head);
+			break;
+		}
+		perform_func(&head, lineCount);
 		free_tokens();
 	}
+	free_stack(&head);
 	free(line);
 	line = NULL;
 	len = 0;
 
-	return (EXIT_SUCCESS);
+	return (exitStatus);
 }
 
 /**
