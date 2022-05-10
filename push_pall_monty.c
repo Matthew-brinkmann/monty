@@ -11,12 +11,14 @@ void monty_push(stack_t **stack, unsigned int line_number)
 	stack_t *newnode = NULL;
 
 	/*if we pass the number 0 to atoi, we ge the same result as an error */
-	if (tokens[1] == NULL || atoi(tokens[1]) == 0)
+	if (tokens[1] == NULL)
 	{
 		no_integer_error(line_number);
 		free_tokens();
 		return;
 	}
+/* loop through the token[1][i] manually*/
+	/*if tokens[1][0] is '-' then keep going*/
 	newnode = malloc(sizeof(stack_t));
 	if (newnode == NULL)
 	{
@@ -42,6 +44,7 @@ void monty_pall(stack_t **stack, unsigned int line_number)
 	stack_t *tmp;
 	if (*stack == NULL)
 		return;
+
 	tmp = *stack;
 
 	while (tmp != NULL)
