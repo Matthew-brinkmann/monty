@@ -57,9 +57,11 @@ int file_open_error(char *file);
 int unknown_op_error(char *op, int lineNum);
 int no_integer_error(int lineNum);
 int malloc_error(void);
+int empty_stack_error(int lineNum);
 
 /* op_funcs */
 void monty_push(stack_t **stack, unsigned int line_number);
 void monty_pall(stack_t **stack, unsigned int line_number);
-
+void monty_pint(stack_t **stack, unsigned int line_number);
+void monty_pop(stack_t **stack, unsigned int line_number);
 #endif
