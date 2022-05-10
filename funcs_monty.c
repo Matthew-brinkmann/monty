@@ -18,7 +18,7 @@ void monty_push(stack_t **stack, unsigned int line_number)
 		free_tokens();
 		return;
 	}
-	while (!tokens[1][i])
+	while (tokens[1][i])
 	{
 		if (isdigit(tokens[1][i]) == 0)
 		{
