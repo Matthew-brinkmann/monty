@@ -1,4 +1,5 @@
 #include <stdlib.h>
+#include <ctype.h>
 #include "main.h"
 
 /**
@@ -9,16 +10,24 @@
 void monty_push(stack_t **stack, unsigned int line_number)
 {
 	stack_t *newnode = NULL;
+	int i = 0;
 
-	/*if we pass the number 0 to atoi, we ge the same result as an error */
-	if (tokens[1] == NULL)
+	if (tokens[1] == NULL || (tokens[1][0] == '-' && !tokens[1][1]))
 	{
 		no_integer_error(line_number);
 		free_tokens();
 		return;
 	}
-/* loop through the token[1][i] manually*/
-	/*if tokens[1][0] is '-' then keep going*/
+	while (!tokens[1][i])
+	{
+		if (isdigit(tokens[1][i]) == 0)
+		{
+			no_integer_error(line_number);
+			free_tokens();
+			return;
+		}
+		i++;
+	}
 	newnode = malloc(sizeof(stack_t));
 	if (newnode == NULL)
 	{
@@ -42,11 +51,10 @@ void monty_push(stack_t **stack, unsigned int line_number)
 void monty_pall(stack_t **stack, unsigned int line_number)
 {
 	stack_t *tmp;
+
 	if (*stack == NULL)
 		return;
-
 	tmp = *stack;
-
 	while (tmp != NULL)
 	{
 		printf("%d\n", tmp->n);
