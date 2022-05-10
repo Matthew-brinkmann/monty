@@ -21,16 +21,10 @@ int main(int argc, char **argv)
 	FILE *monty_fd = NULL;
 	int exit_code = EXIT_SUCCESS;
 	if (argc != 2)
-	{
-		fprintf(stderr, "USAGE: monty file\n");
-		return (EXIT_FAILURE);
-	}
+		return(useage_error());
 	monty_fd = fopen(argv[1], "r");
 	if (monty_fd == NULL)
-	{
-		fprintf(stderr, "Error: Can't open file %s", argv[1]);
-		return (EXIT_FAILURE);
-	}
+		return (file_open_error(argv[1]));
 	exit_code = execute_file(monty_fd);
 	fclose(monty_fd);
 	return (exit_code);

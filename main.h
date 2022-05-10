@@ -48,4 +48,8 @@ void free_tokens();
 void print_tokens(); /* used for testing purposes*/
 int execute_file(FILE *monty_fd);
 
+/* error functions */
+int useage_error(void);
+int file_open_error(char *file);
+
 #endif
