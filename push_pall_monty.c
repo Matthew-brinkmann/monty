@@ -21,6 +21,7 @@ void monty_push(stack_t **stack, unsigned int line_number)
 	if (newnode == NULL)
 	{
 		malloc_error();
+		free_tokens();
 		return;
 	}
 	newnode->n = atoi(tokens[1]);
@@ -36,13 +37,11 @@ void monty_push(stack_t **stack, unsigned int line_number)
  * @stack: a pointer to the top node of the stack
  * @line_number: the currently line number of monty file
  */
-void monty_pall(stack_t **stack,
-		__attribute__((unused))unsigned int line_number)
+void monty_pall(stack_t **stack, unsigned int line_number)
 {
 	stack_t *tmp;
 	if (*stack == NULL)
 		return;
-
 	tmp = *stack;
 
 	while (tmp != NULL)
@@ -50,4 +49,5 @@ void monty_pall(stack_t **stack,
 		printf("%d\n", tmp->n);
 		tmp = tmp->next;
 	}
+	(void)line_number;
 }
