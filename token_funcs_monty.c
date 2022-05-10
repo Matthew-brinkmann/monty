@@ -2,7 +2,7 @@
 #include <string.h>
 
 /**
- * get_op_func - Matches an opcode with a function if one exists
+ * get_func - Matches an opcode with a function if one exists
  * @opcode: The opcode to match.
  *
  * Return: A pointer to the function or NULL
@@ -79,7 +79,7 @@ int execute_file(FILE *monty_fd)
 }
 
 /**
- * free_tokes - frees the global tokens variable
+ * free_tokens - frees the global tokens variable
  *
  * Return: void
  */

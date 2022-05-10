@@ -22,7 +22,7 @@ int main(int argc, char **argv)
 	int exit_code = EXIT_SUCCESS;
 
 	if (argc != 2)
-		return(useage_error());
+		return (useage_error());
 	monty_fd = fopen(argv[1], "r");
 	if (monty_fd == NULL)
 		return (file_open_error(argv[1]));

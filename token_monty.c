@@ -14,6 +14,7 @@ int find_word_count(char *line)
 	int i = 0;
 	int lastChar = 0;
 	int wc = 0;
+
 	if (line == NULL)
 	{
 		return (wc);
@@ -46,6 +47,7 @@ char *get_next_word(char *str)
 {
 	int pending = 0;
 	int i = 0;
+
 	while (*(str + i) != '\0')
 	{
 		if (is_typed_char(str[i]) == 0)
@@ -67,6 +69,7 @@ char *get_next_word(char *str)
 int curr_word_size(char *line)
 {
 	int wLen = 0, pending = 1, i = 0;
+
 	while (*(line + i))
 	{
 		if (is_typed_char(line[i]) == 0)
@@ -107,9 +110,7 @@ int is_typed_char(int c)
  */
 void find_tokens(char *line)
 {
-	int wordCount;
-	int tokenNum = 0;
-	int currWordSize = 0;
+	int wordCount, tokenNum = 0, currWordSize = 0;
 	int n = 0;
 
 	if (line == NULL || !*line)

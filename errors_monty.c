@@ -27,7 +27,7 @@ int file_open_error(char *file)
  * unknown_op_error - prints error
  *
  * @op: the OP that is unknown
- * @line_num: the line number it appeared on.
+ * @lineNum: the line number it appeared on.
  *
  * Return: EXIT_FAILURE
  */

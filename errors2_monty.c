@@ -7,8 +7,8 @@
  */
 int empty_stack_error(int lineNum)
 {
-        fprintf(stderr, "L%d: can't pint, stack empty\n", lineNum);
-        return (EXIT_FAILURE);
+	fprintf(stderr, "L%d: can't pint, stack empty\n", lineNum);
+	return (EXIT_FAILURE);
 }
 /**
  * short_stack_error - empty stack error
@@ -17,8 +17,8 @@ int empty_stack_error(int lineNum)
  */
 int short_stack_error(int lineNum)
 {
-        fprintf(stderr, "L%d: can't swap, stack too short\n", lineNum);
-        return (EXIT_FAILURE);
+	fprintf(stderr, "L%d: can't swap, stack too short\n", lineNum);
+	return (EXIT_FAILURE);
 }
 /**
  * add_stack_error - empty stack error
@@ -27,6 +27,6 @@ int short_stack_error(int lineNum)
  */
 int add_stack_error(int lineNum)
 {
-        fprintf(stderr, "L%d: can't add, stack too short\n", lineNum);
-        return (EXIT_FAILURE);
+	fprintf(stderr, "L%d: can't add, stack too short\n", lineNum);
+	return (EXIT_FAILURE);
 }
