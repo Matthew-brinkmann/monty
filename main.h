@@ -58,8 +58,7 @@ int unknown_op_error(char *op, int lineNum);
 int no_integer_error(int lineNum);
 int malloc_error(void);
 int empty_stack_error(int lineNum);
-int short_stack_error(int lineNum);
-int add_stack_error(int lineNum);
+int short_stack_error(int lineNum, char *operation);
 
 /* op_funcs */
 void monty_push(stack_t **stack, unsigned int line_number);
@@ -69,5 +68,6 @@ void monty_pop(stack_t **stack, unsigned int line_number);
 void monty_nop(stack_t **stack, unsigned int line_number);
 void monty_swap(stack_t **stack, unsigned int line_number);
 void monty_add(stack_t **stack, unsigned int line_number);
+void monty_sub(stack_t **stack, unsigned int line_number);
 
 #endif

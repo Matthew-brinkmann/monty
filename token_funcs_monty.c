@@ -17,6 +17,7 @@ void (*get_func(char *opcode))(stack_t**, unsigned int)
 		{"nop", monty_nop},
 		{"swap", monty_swap},
 		{"add", monty_add},
+		{"sub", monty_sub},
 		{NULL, NULL}
 	};
 	int i;

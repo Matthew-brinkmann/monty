@@ -13,7 +13,7 @@ void monty_swap(stack_t **stack, unsigned int line_number)
 
 	if (*stack == NULL || (*stack)->next == NULL)
 	{
-		short_stack_error(line_number);
+		short_stack_error(line_number, "swap");
 		free_tokens();
 		return;
 	}
@@ -28,7 +28,7 @@ void monty_swap(stack_t **stack, unsigned int line_number)
 }
 
 /**
- * monty_add - push an element to the stack
+ * monty_add - adds the top element from the second top element
  * @stack: a pointer to the top node of the stack
  * @line_number: the current line number of monty file
  */
@@ -36,11 +36,29 @@ void monty_add(stack_t **stack, unsigned int line_number)
 {
 	if (*stack == NULL || (*stack)->next == NULL)
 	{
-		add_stack_error(line_number);
+		short_stack_error(line_number, "add");
 		free_tokens();
 		return;
 	}
 
 	(*stack)->next->n += (*stack)->n;
+	monty_pop(stack, line_number);
+}
+
+/**
+ * monty_sub - subs the top element from the second top element
+ * @stack: a pointer to the top node of the stack
+ * @line_number: the current line number of monty file
+ */
+void monty_sub(stack_t **stack, unsigned int line_number)
+{
+	if (*stack == NULL || (*stack)->next == NULL)
+	{
+		short_stack_error(line_number, "sub");
+		free_tokens();
+		return;
+	}
+
+	(*stack)->next->n -= (*stack)->n;
 	monty_pop(stack, line_number);
 }
