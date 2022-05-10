@@ -20,7 +20,7 @@ int find_word_count(char *line)
 	}
 	while (line[i] != '\0')
 	{
-		if (isalpha(line[i]) == 0 && isdigit(line[i]) == 0)
+		if (is_typed_char(line[i]) == 0)
 		{
 			if (lastChar == 1)
 				wc++;
@@ -48,7 +48,7 @@ char *get_next_word(char *str)
 	int i = 0;
 	while (*(str + i) != '\0')
 	{
-		if (isalpha(str[i]) == 0 && isdigit(str[i]) == 0)
+		if (is_typed_char(str[i]) == 0)
 			pending = 1;
 		else if (pending)
 			break;
@@ -69,17 +69,33 @@ int curr_word_size(char *line)
 	int wLen = 0, pending = 1, i = 0;
 	while (*(line + i))
 	{
-		if (isalpha(line[i]) == 0 && isdigit(line[i]) == 0)
+		if (is_typed_char(line[i]) == 0)
+		{
 			pending = 1;
+		}
 		else if (pending)
 		{
 			wLen++;
 		}
-		if (wLen > 0 && isalpha(line[i]) == 0 && isdigit(line[i]) == 0)
+		if (wLen > 0 && is_typed_char(line[i]) == 0)
 			break;
 		i++;
 	}
 	return (wLen);
+}
+/**
+ * is_typed_char - determains if the character is typed or special
+ *
+ * @c: the char to determain.
+ *
+ * Return: 1 for typed char, 0 for special char
+ */
+int is_typed_char(int c)
+{
+	if (c < 33 || c > 126)
+		return (0);
+
+	return (1);
 }
 
 /**
@@ -108,7 +124,7 @@ void find_tokens(char *line)
 	for (; tokenNum < wordCount; tokenNum++)
 	{
 		currWordSize = curr_word_size(line);
-		if (isalpha(*line) == 0 && isdigit(*line) == 0)
+		if (is_typed_char(*line) == 0)
 		{
 			line = get_next_word(line);
 		}

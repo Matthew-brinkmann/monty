@@ -57,6 +57,12 @@ int execute_file(FILE *monty_fd)
 			break;
 		}
 		perform_func(&head, lineCount);
+		if (!tokens)
+		{
+			exitStatus = EXIT_FAILURE;
+			free_stack(&head);
+			break;
+		}
 		free_tokens();
 	}
 	free_stack(&head);

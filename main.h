@@ -47,6 +47,7 @@ void find_tokens(char *line);
 void free_tokens();
 void print_tokens(); /* used for testing purposes*/
 int execute_file(FILE *monty_fd);
+int is_typed_char(int c);
 
 /* stack_functions */
 void free_stack(stack_t **stack);
