@@ -36,3 +36,24 @@ int unknown_op_error(char *op, int lineNum)
 	fprintf(stderr, "L%d: unknown instruction %s\n", lineNum, op);
 	return (EXIT_FAILURE);
 }
+
+/**
+ * no_integer_error - no integer error
+ * @lineNum: line number
+ * Return: EXIT_FAILURE
+ */
+int no_integer_error(int lineNum)
+{
+	fprintf(stderr, "L%d: usage: push integer\n", lineNum);
+	return (EXIT_FAILURE);
+}
+
+/**
+ * malloc_error - malloc error
+ * Return: EXIT_FAILURE
+ */
+int malloc_error(void)
+{
+	fprintf(stderr, "Error: malloc failed\n");
+	return (EXIT_FAILURE);
+}
