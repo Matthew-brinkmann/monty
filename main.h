@@ -19,9 +19,9 @@ extern char **tokens;
  */
 typedef struct stack_s
 {
- int n;
-        struct stack_s *prev;
-        struct stack_s *next;
+	int n;
+	struct stack_s *prev;
+	struct stack_s *next;
 } stack_t;
 
 /**
@@ -35,7 +35,7 @@ typedef struct stack_s
 typedef struct instruction_s
 {
 	char *opcode;
-        void (*f)(stack_t **stack, unsigned int line_number);
+	void (*f)(stack_t **stack, unsigned int line_number);
 } instruction_t;
 
 /* Tokenising functions */
@@ -43,8 +43,8 @@ int find_word_count(char *line);
 char *get_next_word(char *str);
 int curr_word_size(char *line);
 void find_tokens(char *line);
-void free_tokens();
-void print_tokens(); /* used for testing purposes*/
+void free_tokens(void);
+void print_tokens(void);
 int execute_file(FILE *monty_fd);
 int is_typed_char(int c);
 
