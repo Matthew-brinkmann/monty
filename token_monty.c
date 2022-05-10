@@ -3,9 +3,15 @@
 #include <unistd.h>
 #include <string.h>
 #include <ctype.h>
+#include "main.h"
 
-char **tokens = NULL;
-
+/**
+ * find_word_count - finds how many words are in the current line
+ *
+ * @line: the line to search for words
+ *
+ * Return: number of words in line
+ */
 int find_word_count(char *line)
 {
 	int i = 0;
@@ -32,6 +38,13 @@ int find_word_count(char *line)
 	return (wc);
 }
 
+/**
+ * get_next_word - moves pointer to next word in string
+ *
+ * @str: string to move to next word
+ *
+ * Return: pointer to next word in string
+ */
 char *get_next_word(char *str)
 {
 	int pending = 0;
@@ -46,6 +59,14 @@ char *get_next_word(char *str)
 	}
 	return (str + i);
 }
+
+/**
+ * curr_word_size - finds the size of the current word
+ *
+ * @line: the string to find the size of the word
+ *
+ * Return: length in characters of word.
+ */
 int curr_word_size(char *line)
 {
 	int wLen = 0, pending = 1, i = 0;
@@ -64,6 +85,13 @@ int curr_word_size(char *line)
 	return (wLen);
 }
 
+/**
+ * find_tokens - splits the current line into individual tokens
+ *
+ * @line: the line to find the tokens of
+ *
+ * Return: void, stores tokens in global variable.
+ */
 void find_tokens(char *line)
 {
 	int wordCount;
@@ -108,64 +136,4 @@ void find_tokens(char *line)
 		line = get_next_word(line);
 	}
 	tokens[tokenNum] = NULL;
-}
-
-void free_tokens()
-{
-	int i = 0;
-
-	if (tokens == NULL)
-		return;
-
-	while(tokens[i] != NULL)
-	{
-		free(tokens[i]);
-		i++;
-	}
-	free(tokens);
-	tokens = NULL;
-}
-
-void print_tokens()
-{
-	int i = 0;
-
-	if (tokens == NULL)
-		return;
-
-	for (; tokens[i]; i++)
-		printf("token[%d] = %s\n", i, tokens[i]);
-}
-
-int main(int argc, char **argv)
-{
-	FILE *script_fd = NULL;
-	int exit_code = EXIT_SUCCESS;
-	char *line = NULL;
-	size_t len = 0;
-	int wc = 0;
-	int lineCount = 0;
-	if (argc != 2)
-	{
-		fprintf(stderr, "usage: a.out [test file]\n");
-		return (EXIT_FAILURE);
-	}
-	script_fd = fopen(argv[1], "r");
-	if (script_fd == NULL)
-		return (EXIT_FAILURE);
-	exit_code = 1;
-	while (getline(&line, &len, script_fd) != -1)
-	{
-		if (line[0] != '\n')
-			line = strtok(line, "\n");
-		find_tokens(line);
-		lineCount++;
-		print_tokens();
-		free_tokens();
-	}
-	free(line);
-	line = NULL;
-	len = 0;
-	fclose(script_fd);
-	return (exit_code);
 }
