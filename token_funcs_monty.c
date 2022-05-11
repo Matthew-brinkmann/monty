@@ -2,6 +2,26 @@
 #include "monty.h"
 
 /**
+ * is_line_empty - checks if the getline is empty
+ *
+ * @line: the line to see if empty
+ * Return: 1 if tokens exist, or 0 if empty
+ */
+int is_line_empty(char *line)
+{
+	int i = 0;
+
+	while (line[i] != '\0')
+	{
+		if (line[i] == '\n')
+			return (0);
+		if (line[i] > 33 && line[i] < 126)
+			break;
+		i++;
+	}
+	return (1);
+}
+/**
  * get_func - Matches an opcode with a function if one exists
  * @opcode: The opcode to match.
  *
@@ -60,7 +80,7 @@ int execute_file(FILE *monty_fd)
 		return (EXIT_FAILURE);
 	while (getdelim(&line, &len, '\n',  monty_fd) != -1)
 	{
-		if (line[0] == '\n')
+		if (is_line_empty(line) == 0)
 		{
 			lineCount++;
 			continue;
