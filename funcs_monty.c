@@ -101,7 +101,7 @@ void monty_pop(stack_t **stack, unsigned int line_number)
 
 	if ((*stack)->next == NULL)
 	{
-		empty_stack_error(line_number);
+		empty_stack_pop_error(line_number);
 		free_tokens();
 		return;
 	}
