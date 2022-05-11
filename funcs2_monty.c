@@ -93,7 +93,7 @@ void monty_div(stack_t **stack, unsigned int line_number)
 		return;
 	}
 
-	if ((*stack)->next->next->n == 0)
+	if ((*stack)->next->n == 0)
 	{
 		division_error(line_number);
 		free_tokens();
