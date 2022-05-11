@@ -21,3 +21,13 @@ int short_stack_error(int lineNum, char *operation)
 	fprintf(stderr, "L%d: can't %s, stack too short\n", lineNum, operation);
 	return (EXIT_FAILURE);
 }
+/**
+ * division_error - shot stack error
+ * @lineNum: line number
+ * Return: EXIT_FAILURE
+ */
+int division_error(int lineNum)
+{
+	fprintf(stderr, "L%d: division by zero\n", lineNum);
+	return (EXIT_FAILURE);
+}

@@ -62,3 +62,46 @@ void monty_sub(stack_t **stack, unsigned int line_number)
 	(*stack)->next->n -= (*stack)->n;
 	monty_pop(stack, line_number);
 }
+
+/**
+ * monty_mul - multiplys the top element from the second top element
+ * @stack: a pointer to the top node of the stack
+ * @line_number: the current line number of monty file
+ */
+void monty_mul(stack_t **stack, unsigned int line_number)
+{
+	if (*stack == NULL || (*stack)->next == NULL)
+	{
+		short_stack_error(line_number, "mul");
+		free_tokens();
+		return;
+	}
+
+	(*stack)->next->n *= (*stack)->n;
+	monty_pop(stack, line_number);
+}
+
+/**
+ * monty_div - div the top element from the second top element
+ * @stack: a pointer to the top node of the stack
+ * @line_number: the current line number of monty file
+ */
+void monty_div(stack_t **stack, unsigned int line_number)
+{
+	if (*stack == NULL || (*stack)->next == NULL)
+	{
+		short_stack_error(line_number, "div");
+		free_tokens();
+		return;
+	}
+
+	if ((*stack)->next->n == 0)
+	{
+		division_error(line_number);
+		free_tokens();
+		return;
+	}
+
+	(*stack)->next->n /= (*stack)->n;
+	monty_pop(stack, line_number);
+}

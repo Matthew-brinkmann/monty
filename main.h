@@ -59,6 +59,7 @@ int no_integer_error(int lineNum);
 int malloc_error(void);
 int empty_stack_error(int lineNum);
 int short_stack_error(int lineNum, char *operation);
+int division_error(int lineNum);
 
 /* op_funcs */
 void monty_push(stack_t **stack, unsigned int line_number);
