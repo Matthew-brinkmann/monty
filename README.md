@@ -26,7 +26,7 @@ Run the interpreter on a file:
 ```
 ./monty file.m
 ```
-## :running: Getting Started
+## :computer: Technical
 
 * [Ubuntu 20.04 LTS] - operating system
 
