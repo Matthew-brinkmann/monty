@@ -84,6 +84,17 @@ Run the interpreter on a file:
 * **queue**
   * sets the format of the data to a queue (FIFO).
 
+* **pchar**
+  * prints the char at the top of the stack, followed by a new line.
+  * The integer stored at the top of the stack is treated as the ascii value of the character to be printed and must exist in the ASCII table.
+  * If the stack is empty, will cause an error
+
+* **pstr**
+  * prints the string starting at the top of the stack, followed by a new line.
+  * The integer stored in each element of the stack is treated as the ascii value of the character to be printed.
+  * will stop if stack is over, reaches element 0 or the value is out of range for the ASCII table.
+  * if the stack is empty, this funciton will print a new line.
+
 :heavy_exclamation_mark: functions are case sensitive and capital letters will not work.
 
 :heavy_exclamation_mark: Lines that start with a `#` comments and the whole line is ignored.
