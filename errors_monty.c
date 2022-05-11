@@ -1,4 +1,4 @@
-#include "main.h"
+#include "monty.h"
 
 /**
  * useage_error - prints error

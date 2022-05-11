@@ -1,6 +1,6 @@
 #include <string.h>
 #include <ctype.h>
-#include "main.h"
+#include "monty.h"
 
 /**
  * find_word_count - finds how many words are in the current line

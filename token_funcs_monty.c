@@ -1,5 +1,5 @@
-#include "main.h"
 #include <string.h>
+#include "monty.h"
 
 /**
  * get_func - Matches an opcode with a function if one exists

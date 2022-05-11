@@ -3,7 +3,7 @@
 #include <fcntl.h>
 #include <string.h>
 
-#include "main.h"
+#include "monty.h"
 
 char **tokens = NULL;
 

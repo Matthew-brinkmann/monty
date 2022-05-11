@@ -1,4 +1,4 @@
-#include "main.h"
+#include "monty.h"
 
 /**
  * empty_stack_error - empty stack error
