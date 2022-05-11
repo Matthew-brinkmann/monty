@@ -78,6 +78,8 @@ Run the interpreter on a file:
   * The result is stored in the second element from the top and the top element is removed.
   * The top element can not be 0(zero)
 
+:heavy_exclamation_mark: functions are case sensitive and capital letters will not work.
+
 :heavy_exclamation_mark: Lines that start with a `#` comments and the whole line is ignored.
 
 :heavy_exclamation_mark: Lines can be empty and can contain any number of spaces before or after an opcode and its argument (only the first opcode and/or argument is taken into account).
