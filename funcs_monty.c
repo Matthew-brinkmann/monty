@@ -9,8 +9,7 @@
  */
 void monty_push(stack_t **stack, unsigned int line_number)
 {
-	stack_t *newnode = NULL;
-	int i = 0;
+	int i = 0, addSuccess;
 
 	if (tokens[1] == NULL || (tokens[1][0] == '-' && !tokens[1][1]))
 	{
@@ -18,7 +17,7 @@ void monty_push(stack_t **stack, unsigned int line_number)
 		free_tokens();
 		return;
 	}
-	while (tokens[1][i])
+	for (; tokens[1][i]; i++)
 	{
 		if (tokens[1][i] == '-' && i == 0)
 		{
@@ -31,21 +30,25 @@ void monty_push(stack_t **stack, unsigned int line_number)
 			free_tokens();
 			return;
 		}
-		i++;
 	}
-	newnode = malloc(sizeof(stack_t));
-	if (newnode == NULL)
+	if (stack_mode(*stack) == 0)
 	{
-		malloc_error();
-		free_tokens();
-		return;
+		addSuccess = add_to_stack(stack, atoi(tokens[1]));
+		if (addSuccess == 0)
+		{
+			malloc_error();
+			return;
+		}
 	}
-	newnode->n = atoi(tokens[1]);
-	newnode->prev = NULL;
-	newnode->next = *stack;
-	if (*stack != NULL)
-		(*stack)->prev = newnode;
-	*stack = newnode;
+	else if (stack_mode(*stack) == 1)
+	{
+		addSuccess = add_to_queue(stack, atoi(tokens[1]));
+		if (addSuccess == 0)
+		{
+			malloc_error();
+			return;
+		}
+	}
 }
 
 /**
@@ -59,7 +62,7 @@ void monty_pall(stack_t **stack, unsigned int line_number)
 
 	if (*stack == NULL)
 		return;
-	tmp = *stack;
+	tmp = (*stack)->next;
 	while (tmp != NULL)
 	{
 		printf("%d\n", tmp->n);
@@ -77,8 +80,8 @@ void monty_pint(stack_t **stack, unsigned int line_number)
 {
 	stack_t *head = NULL;
 
-	head = *stack;
-	if (*stack == NULL)
+	head = (*stack)->next;
+	if ((*stack)->next == NULL)
 	{
 		empty_stack_error(line_number);
 		free_tokens();
@@ -96,23 +99,23 @@ void monty_pop(stack_t **stack, unsigned int line_number)
 {
 	stack_t *tmp = NULL;
 
-	tmp = *stack;
-	if (*stack == NULL)
+	if ((*stack)->next == NULL)
 	{
 		empty_stack_error(line_number);
 		free_tokens();
 		return;
 	}
-	if (!((*stack)->next))
+	if (!((*stack)->next->next))
 	{
-		*stack = NULL;
+		free((*stack)->next);
+		(*stack)->next = NULL;
 		return;
 	}
-	tmp = (*stack)->next;
-	tmp->prev = NULL;
-	tmp->next = (*stack)->next->next;
-	free(*stack);
-	*stack = tmp;
+	tmp = (*stack)->next->next;
+	tmp->prev = *stack;
+	tmp->next = (*stack)->next->next->next;
+	free((*stack)->next);
+	(*stack)->next = tmp;
 }
 
 /**

@@ -64,19 +64,20 @@ int stack_mode(stack_t *stack)
  *
  * Return: 1 if success, 0 if fail
  */
-int add_to_stack(stack_t *stack, int i);
+int add_to_stack(stack_t **stack, int i)
 {
 	stack_t *newnode = NULL;
 
 	newnode = malloc(sizeof(stack_t));
 	if (newnode == NULL)
 	{
+		free_tokens();
 		return (0);
 	}
-	newnode-> = i;
+	newnode->n = i;
 	newnode->prev = NULL;
 	newnode->next = (*stack)->next;
-	if (*stack->next != NULL)
+	if ((*stack)->next != NULL)
 		(*stack)->next->prev = newnode;
 	(*stack)->next = newnode;
 
@@ -91,16 +92,17 @@ int add_to_stack(stack_t *stack, int i);
  *
  * Return: 1 if success, 0 if fail
  */
-int add_to_queue(stack_t *stack, int i);
+int add_to_queue(stack_t **stack, int i)
 {
 	stack_t *newnode = NULL, *tmp = NULL;
 
 	newnode = malloc(sizeof(stack_t));
 	if (newnode == NULL)
 	{
+		free_tokens();
 		return (0);
 	}
-	newnode-> = i;
+	newnode->n = i;
 	tmp = *stack;
 	while (tmp->next != NULL)
 		tmp = tmp->next;

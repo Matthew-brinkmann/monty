@@ -21,6 +21,8 @@ void (*get_func(char *opcode))(stack_t**, unsigned int)
 		{"mul", monty_mul},
 		{"div", monty_div},
 		{"mod", monty_mod},
+		{"stack", monty_stack},
+		{"queue", monty_queue},
 		{NULL, NULL}
 	};
 	int i;
@@ -50,6 +52,8 @@ int execute_file(FILE *monty_fd)
 	stack_t *head = NULL;
 	void (*perform_func)(stack_t**, unsigned int);
 
+	if (start_stack(&head) == EXIT_FAILURE)
+		return (EXIT_FAILURE);
 	while (getdelim(&line, &len, '\n',  monty_fd) != -1)
 	{
 		if (line[0] == '\n')

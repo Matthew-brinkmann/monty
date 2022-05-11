@@ -50,6 +50,10 @@ int is_typed_char(int c);
 
 /* stack_functions */
 void free_stack(stack_t **stack);
+int start_stack(stack_t **stack);
+int stack_mode(stack_t *stack);
+int add_to_stack(stack_t **stack, int i);
+int add_to_queue(stack_t **stack, int i);
 
 /* error functions */
 int useage_error(void);
@@ -73,5 +77,7 @@ void monty_sub(stack_t **stack, unsigned int line_number);
 void monty_mul(stack_t **stack, unsigned int line_number);
 void monty_div(stack_t **stack, unsigned int line_number);
 void monty_mod(stack_t **stack, unsigned int line_number);
+void monty_stack(stack_t **stack, unsigned int line_number);
+void monty_queue(stack_t **stack, unsigned int line_number);
 
 #endif
