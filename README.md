@@ -1,5 +1,5 @@
 # 🐍 Monty Interpreter
-## By Yuan Fang and Matthew Brinkmann
+## By [Yuan Fang](https://github.com/yuan-fang-228) and Matthew Brinkmann
 This is a simple interpreter for the monty coding language.
 ### About the language
 Monty 0.98 is a scripting language that is first compiled into Monty byte codes (Just like Python). It relies on a unique stack, with specific instructions to manipulate it. The goal of this project is to create an interpreter for Monty ByteCodes files.
@@ -77,6 +77,12 @@ Run the interpreter on a file:
   * Computes the modulus of the second element from the top of the stack divided by the top element.
   * The result is stored in the second element from the top and the top element is removed.
   * The top element can not be 0(zero)
+
+* **stack**
+  * sets the format of the data to a stack (LIFO). This is the default behavior of the program.
+
+* **queue**
+  * sets the format of the data to a queue (FIFO).
 
 :heavy_exclamation_mark: functions are case sensitive and capital letters will not work.
 
