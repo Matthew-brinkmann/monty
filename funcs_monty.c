@@ -12,7 +12,7 @@ void monty_push(stack_t **stack, unsigned int line_number)
 	stack_t *newnode = NULL;
 	int i = 0;
 
-	if (tokens[1] == NULL)
+	if (tokens[1] == NULL || (tokens[1][0] == '-' && !tokens[1][1]))
 	{
 		no_integer_error(line_number);
 		free_tokens();
