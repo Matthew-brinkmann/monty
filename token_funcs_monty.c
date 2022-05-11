@@ -23,6 +23,8 @@ void (*get_func(char *opcode))(stack_t**, unsigned int)
 		{"mod", monty_mod},
 		{"stack", monty_stack},
 		{"queue", monty_queue},
+		{"pchar", monty_pchar},
+		{"pstr", monty_pstr},
 		{NULL, NULL}
 	};
 	int i;

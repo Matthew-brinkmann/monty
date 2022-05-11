@@ -31,3 +31,23 @@ int division_error(int lineNum)
 	fprintf(stderr, "L%d: division by zero\n", lineNum);
 	return (EXIT_FAILURE);
 }
+/**
+ * empty_stack_pchar_error - empty stack error when pchar
+ * @lineNum: line number
+ * Return: EXIT_FAILURE
+ */
+int empty_stack_pchar_error(int lineNum)
+{
+	fprintf(stderr, "L%d: can't pchar, stack empty\n", lineNum);
+	return (EXIT_FAILURE);
+}
+/**
+ * out_range_pchar_error - out of range error when pchar
+ * @lineNum: line number
+ * Return: EXIT_FAILURE
+ */
+int out_range_pchar_error(int lineNum)
+{
+	fprintf(stderr, "L%d: can't pchar, value out of range\n", lineNum);
+	return (EXIT_FAILURE);
+}

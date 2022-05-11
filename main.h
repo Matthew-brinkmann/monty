@@ -64,6 +64,8 @@ int malloc_error(void);
 int empty_stack_error(int lineNum);
 int short_stack_error(int lineNum, char *operation);
 int division_error(int lineNum);
+int empty_stack_pchar_error(int lineNum);
+int out_range_pchar_error(int lineNum);
 
 /* op_funcs */
 void monty_push(stack_t **stack, unsigned int line_number);
@@ -79,5 +81,7 @@ void monty_div(stack_t **stack, unsigned int line_number);
 void monty_mod(stack_t **stack, unsigned int line_number);
 void monty_stack(stack_t **stack, unsigned int line_number);
 void monty_queue(stack_t **stack, unsigned int line_number);
+void monty_pstr(stack_t **stack, unsigned int line_number);
+void monty_pchar(stack_t **stack, unsigned int line_number);
 
 #endif
