@@ -95,6 +95,12 @@ Run the interpreter on a file:
   * will stop if stack is over, reaches element 0 or the value is out of range for the ASCII table.
   * if the stack is empty, this funciton will print a new line.
 
+* **rotl**
+  * The top element of the stack becomes the last one, and the second top element of the stack becomes the first one.
+
+* **rotr**
+  * The last element of the stack becomes the top element of the stack
+
 :heavy_exclamation_mark: functions are case sensitive and capital letters will not work.
 
 :heavy_exclamation_mark: Lines that start with a `#` comments and the whole line is ignored.
